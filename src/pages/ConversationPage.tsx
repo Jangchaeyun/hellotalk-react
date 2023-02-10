@@ -1,12 +1,20 @@
+import { useEffect } from 'react';
 import { Outlet, useParams } from "react-router-dom"
 import { ConversationPanel } from "../components/conversations/ConversationPanel";
 import { ConversationSidebar } from "../components/conversations/ConversationSidebar";
+import { getAuthUser } from '../utils/api';
 import { Page } from "../utils/styles"
 import mockConversations from '../__mocks__/conversations'
 
 export const ConversationPage = () => {
      const { id } = useParams();
      console.log(id);
+
+     useEffect(() => {
+          getAuthUser()
+         .then(({ data }) => console.log(data))
+         .catch((err) => console.log(err));
+     }, []);
      return (
           <Page>
                <ConversationSidebar conversations={mockConversations} />
