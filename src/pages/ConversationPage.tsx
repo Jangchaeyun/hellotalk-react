@@ -10,14 +10,9 @@ export const ConversationPage = () => {
      const { id } = useParams();
      console.log(id);
 
-     useEffect(() => {
-          getAuthUser()
-         .then(({ data }) => console.log(data))
-         .catch((err) => console.log(err));
-     }, []);
      return (
           <Page>
-               <ConversationSidebar conversations={mockConversations} />
+               <ConversationSidebar conversations={[]} />
                {!id && 
                <ConversationPanel />}
                <Outlet />
